@@ -5,6 +5,10 @@
       "path": "apps/backend-mock",
     },
     {
+      "name": "linsir-saas-web",
+      "path": "apps/linsir-saas-web",
+    },
+    {
       "name": "@vben/web-antd",
       "path": "apps/web-antd",
     },
