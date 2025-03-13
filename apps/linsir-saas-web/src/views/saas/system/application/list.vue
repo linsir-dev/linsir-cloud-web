@@ -5,17 +5,19 @@ import type {
   VxeTableGridOptions,
 } from '#/adapter/vxe-table';
 
-import { Page, useVbenModal } from '@vben/common-ui';
+import { Page, useVbenDrawer } from '@vben/common-ui';
 import { Plus } from '@vben/icons';
 
 import { Button, message } from 'ant-design-vue';
 
 import { useVbenVxeGrid } from '#/adapter/vxe-table';
-import { getApplicationList } from '#/api';
+import { deleteApplition, getApplicationList } from '#/api';
+import { $t } from '#/locales';
 
 import { useColumns, useGridFormSchema } from './data';
 import Form from './modules/form.vue';
 
+// 查询表单配置
 const formOptions: VbenFormProps = {
   // 默认展开
   collapsed: false,
@@ -28,6 +30,7 @@ const formOptions: VbenFormProps = {
   submitOnEnter: false,
 };
 
+// 列表配置
 const gridOptions: VxeTableGridOptions<RowType> = {
   columns: useColumns(onActionClick),
   stripe: true,
@@ -67,15 +70,15 @@ const [Grid, gridApi] = useVbenVxeGrid({
   gridOptions,
 });
 
-// 弹出框
-const [FormModal, formModalApi] = useVbenModal({
+// 抽屉
+const [FormDrawer, formDrawerApi] = useVbenDrawer({
   connectedComponent: Form,
   destroyOnClose: true,
 });
 
 // 新增
 function onCreate() {
-  formModalApi.setData({}).open();
+  formDrawerApi.setData({}).open();
 }
 
 // 删除或编辑
@@ -97,7 +100,7 @@ function onActionClick(e: OnActionClickParams<ApplicationApi.SysApplication>) {
  * @param row
  */
 function onEdit(row: ApplicationApi.SysApplication) {
-  formModalApi.setData(row).open();
+  formDrawerApi.setData(row).open();
 }
 
 /**
@@ -110,7 +113,7 @@ function onDelete(row: ApplicationApi.SysApplication) {
     duration: 0,
     key: 'action_process_msg',
   });
-  deleteDept(row.id)
+  deleteApplition(row.id)
     .then(() => {
       message.success({
         content: $t('ui.actionMessage.deleteSuccess', [row.name]),
@@ -133,11 +136,12 @@ function refreshGrid() {
 
 <template>
   <Page auto-content-height>
-    <FormModal @success="refreshGrid" />
+    <FormDrawer @success="refreshGrid" />
     <Grid>
       <template #toolbar-tools>
         <Button type="primary" @click="onCreate">
-          <Plus class="size-5" />新增
+          <Plus class="size-5" />
+          {{ $t('ui.actionTitle.create', [$t('system.menu.name')]) }}
         </Button>
       </template>
     </Grid>

@@ -46,15 +46,11 @@ export function useColumns(
       cellRender: {
         attrs: {
           nameField: 'name',
-          nameTitle: 'xxx',
+          nameTitle: 'name',
           onClick: onActionClick,
         },
         name: 'CellOperation',
         options: [
-          {
-            code: 'append',
-            text: '新增下级',
-          },
           'edit', // 默认的编辑按钮
           'delete', // 默认的删除按钮
         ],
@@ -64,7 +60,7 @@ export function useColumns(
       headerAlign: 'center',
       showOverflow: false,
       title: $t('system.menu.operation'),
-      width: 130,
+      width: 160,
     },
   ];
 }

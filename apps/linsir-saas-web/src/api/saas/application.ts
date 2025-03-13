@@ -55,4 +55,18 @@ async function updateApplication(
   return requestClient.put(`${applicationUrl}update/${id}`, data);
 }
 
-export { createApplication, getApplicationList, updateApplication };
+/**
+ * 删除应用
+ * @param id
+ * @returns
+ */
+async function deleteApplition(id: string) {
+  return requestClient.delete(`${applicationUrl}update/${id}`);
+}
+
+export {
+  createApplication,
+  deleteApplition,
+  getApplicationList,
+  updateApplication,
+};
