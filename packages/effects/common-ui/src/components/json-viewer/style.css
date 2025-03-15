@@ -1,0 +1,76 @@
+.default-json-theme {
+  font-family: Consolas, Menlo, Courier, monospace;
+  font-size: 14px;
+  color: hsl(var(--foreground));
+  white-space: nowrap;
+  background: hsl(var(--background));
+}
+.default-json-theme.jv-container.boxed {
+  border: 1px solid hsl(var(--border));
+}
+.default-json-theme .jv-ellipsis {
+  display: inline-block;
+  padding: 0 4px 2px;
+  font-size: 0.9em;
+  line-height: 0.9;
+  color: hsl(var(--secondary-foreground));
+  vertical-align: 2px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  background-color: hsl(var(--secondary));
+  border-radius: 3px;
+}
+.default-json-theme .jv-button {
+  color: hsl(var(--primary));
+}
+.default-json-theme .jv-key {
+  color: hsl(var(--heavy-foreground));
+}
+.default-json-theme .jv-item.jv-array {
+  color: hsl(var(--heavy-foreground));
+}
+.default-json-theme .jv-item.jv-boolean {
+  color: hsl(var(--red-400));
+}
+.default-json-theme .jv-item.jv-function {
+  color: hsl(var(--destructive-foreground));
+}
+.default-json-theme .jv-item.jv-number {
+  color: hsl(var(--info-foreground));
+}
+.default-json-theme .jv-item.jv-number-float {
+  color: hsl(var(--info-foreground));
+}
+.default-json-theme .jv-item.jv-number-integer {
+  color: hsl(var(--info-foreground));
+}
+.default-json-theme .jv-item.jv-object {
+  color: hsl(var(--accent-darker));
+}
+.default-json-theme .jv-item.jv-undefined {
+  color: hsl(var(--secondary-foreground));
+}
+.default-json-theme .jv-item.jv-string {
+  color: hsl(var(--primary));
+  word-break: break-word;
+  white-space: normal;
+}
+.default-json-theme.jv-container .jv-code {
+  padding: 10px;
+}
+.default-json-theme.jv-container .jv-code.boxed:not(.open) {
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+}
+.default-json-theme.jv-container .jv-code.open {
+  padding-bottom: 10px;
+}
+.default-json-theme.jv-container .jv-code .jv-toggle::before {
+  padding: 0 2px;
+  border-radius: 2px;
+}
+.default-json-theme.jv-container .jv-code .jv-toggle:hover::before {
+  background: hsl(var(--accent-foreground));
+}/*# sourceMappingURL=style.css.map */

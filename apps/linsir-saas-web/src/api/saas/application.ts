@@ -25,7 +25,7 @@ export namespace ApplicationApi {
 /**
  * 获取示例表格数据
  */
-async function getApplicationList(params: DemoTableApi.PageFetchParams) {
+async function getApplicationList(params: ApplicationApi.PageFetchParams) {
   return requestClient.get<Array<ApplicationApi.SysApplication>>(
     `${applicationUrl}list`,
     { params },

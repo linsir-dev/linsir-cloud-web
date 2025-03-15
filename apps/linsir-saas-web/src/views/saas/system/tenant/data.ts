@@ -15,11 +15,6 @@ export function useGridFormSchema(): VbenFormSchema[] {
       fieldName: 'name',
       label: '名称',
     },
-    {
-      component: 'Input',
-      fieldName: 'englishName',
-      label: '英文名称',
-    },
   ];
 }
 /**
@@ -32,14 +27,25 @@ export function useColumns(
 ): VxeTableGridOptions['columns'] {
   return [
     { title: '序号', type: 'seq', width: 50 },
-    { field: 'id', title: 'ID' },
-    { field: 'name', title: '应用名称' },
-    { field: 'englishName', title: '英文名称' },
-    { field: 'ver', title: '版本' },
-    { field: 'ico', title: 'ico' },
-    { field: 'intoLink', title: '连接' },
-    { field: 'loginImg', title: '登陆图片' },
-    { field: 'logo', title: 'LOGO' },
+    // { field: 'id', title: 'ID' },
+    { field: 'name', title: '租户名称', width: 250 },
+    { field: 'tenantCode', title: '租户编码' },
+    { field: 'tel', title: '联系方式' },
+    { field: 'phone', title: '电话' },
+    { field: 'fax', title: '传真' },
+    { field: 'address', title: '简要地址' },
+    {
+      field: 'enable',
+      title: '是否可用',
+      slots: { default: 'enable' },
+    },
+    { field: 'timeExpiration', title: '到期时间' },
+    { field: 'description', title: '描述' },
+    {
+      field: 'types',
+      title: '网站标题',
+      slots: { default: 'types' },
+    },
     { field: 'createdTime', title: '创建时间' },
     {
       align: 'center',
@@ -73,61 +79,47 @@ export function useSchema(): VbenFormSchema[] {
     {
       component: 'Input',
       fieldName: 'name',
-      label: $t('system.applicaiton.name'),
-      rules: z
-        .string()
-        .min(
-          2,
-          $t('ui.formRules.minLength', [$t('system.applicaiton.name'), 2]),
-        )
-        .max(
-          20,
-          $t('ui.formRules.maxLength', [$t('system.applicaiton.name'), 20]),
-        ),
-    },
-    {
-      component: 'Input',
-      fieldName: 'englishName',
-      label: $t('system.applicaiton.englishName'),
+      label: $t('system.tenant.name'),
       rules: z.string(),
     },
     {
       component: 'Input',
-      fieldName: 'ver',
-      label: $t('system.applicaiton.ver'),
-      rules: z
-        .string()
-        .min(2, $t('ui.formRules.minLength', [$t('system.dept.deptName'), 2]))
-        .max(
-          20,
-          $t('ui.formRules.maxLength', [$t('system.dept.deptName'), 20]),
-        ),
-    },
-    {
-      component: 'Input',
-      fieldName: 'business',
-      label: $t('system.applicaiton.business'),
-    },
-    {
-      component: 'IconPicker',
-      fieldName: 'ico',
-      label: $t('system.applicaiton.ico'),
-    },
-    {
-      component: 'Input',
-      fieldName: 'intoLink',
-      label: $t('system.applicaiton.intoLink'),
+      fieldName: 'tel',
+      label: $t('system.tenant.tel'),
       rules: z.string(),
     },
     {
       component: 'Input',
-      fieldName: 'loginImg',
-      label: $t('system.applicaiton.loginImg'),
+      fieldName: 'phone',
+      label: $t('system.tenant.phone'),
+      rules: z.string(),
     },
     {
       component: 'Input',
-      fieldName: 'logo',
-      label: $t('system.applicaiton.logo'),
+      fieldName: 'fax',
+      label: $t('system.tenant.fax'),
+    },
+    {
+      component: 'Input',
+      fieldName: 'address',
+      label: $t('system.tenant.address'),
+      rules: z.string(),
+    },
+    {
+      component: 'Switch',
+      fieldName: 'enable',
+      label: $t('system.tenant.enable'),
+      rules: z.string(),
+    },
+    {
+      component: 'DatePicker',
+      fieldName: 'timeExpiration',
+      label: $t('system.tenant.timeExpiration'),
+    },
+    {
+      component: 'Input',
+      fieldName: 'description',
+      label: $t('system.tenant.description'),
     },
   ];
 }

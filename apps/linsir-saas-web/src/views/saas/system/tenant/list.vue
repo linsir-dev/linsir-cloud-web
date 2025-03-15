@@ -11,7 +11,7 @@ import { Plus } from '@vben/icons';
 import { Button, message } from 'ant-design-vue';
 
 import { useVbenVxeGrid } from '#/adapter/vxe-table';
-import { deleteApplition, getApplicationList } from '#/api';
+import { deleteApplition, getSysTenantList } from '#/api';
 import { $t } from '#/locales';
 
 import { useColumns, useGridFormSchema } from './data';
@@ -42,7 +42,7 @@ const gridOptions: VxeTableGridOptions<RowType> = {
     ajax: {
       query: async ({ page }, formValues) => {
         message.success(`查询参数: ${JSON.stringify(formValues)}`);
-        return await getApplicationList({
+        return await getSysTenantList({
           page: page.currentPage,
           pageSize: page.pageSize,
           ...formValues,
@@ -138,10 +138,18 @@ function refreshGrid() {
   <Page auto-content-height>
     <FormDrawer @success="refreshGrid" />
     <Grid>
+      <template #types="{ row }">
+        <ul>
+          <li v-for="item in row.types" :key="index">
+            {{ item }}
+          </li>
+        </ul>
+        {{ row.types }}
+      </template>
       <template #toolbar-tools>
         <Button type="primary" @click="onCreate">
           <Plus class="size-5" />
-          {{ $t('ui.actionTitle.create', [$t('system.applicaiton.title')]) }}
+          {{ $t('ui.actionTitle.create', [$t('system.tenant.title')]) }}
         </Button>
       </template>
     </Grid>
