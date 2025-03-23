@@ -21,7 +21,23 @@
     // CSS 变量提示
     "vunguyentuan.vscode-css-variables",
     // 在 package.json 中显示 PNPM catalog 的版本
-    "antfu.pnpm-catalog-lens"
+    "antfu.pnpm-catalog-lens",
+
+    "christian-kohler.path-intellisense",
+
+    "vscode-icons-team.vscode-icons",
+
+    "davidanson.vscode-markdownlint",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "mrmlnc.vscode-less",
+    "lokalise.i18n-ally",
+    "redhat.vscode-yaml",
+    "csstools.postcss",
+    "mikestead.dotenv",
+    "eamodio.gitlens",
+    "antfu.unocss",
+    "Vue.volar"
   ],
   "unwantedRecommendations": [
     // 和 volar 冲突
