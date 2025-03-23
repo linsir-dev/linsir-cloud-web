@@ -65,4 +65,27 @@ async function getSysTenantList(params: TenantApi.PageFetchParams) {
   });
 }
 
-export { getSysTenantList };
+/**
+ * 创建应用
+ * @param data 应用数据
+ */
+async function createTenant(data: Omit<TenantApi.SysTenant, 'id'>) {
+  return requestClient.post(`${tenantUrl}add`, data);
+}
+
+async function updateTenant(
+  id: string,
+  data: Omit<ApplicationApi.SysApplication, 'id'>,
+) {
+  return requestClient.put(`${tenantUrl}update/${id}`, data);
+}
+
+/**
+ * 删除应用
+ * @param id
+ * @returns
+ */
+async function deleteTenant(id: string) {
+  return requestClient.delete(`${tenantUrl}update/${id}`);
+}
+export { createTenant, deleteTenant, getSysTenantList, updateTenant };

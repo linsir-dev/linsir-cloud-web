@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { TenantApi } from '#/api';
+import type { ApplicationApi } from '#/api';
 
 import { computed, ref } from 'vue';
 
@@ -8,7 +8,7 @@ import { useVbenDrawer } from '@vben/common-ui';
 import { Button } from 'ant-design-vue';
 
 import { useVbenForm } from '#/adapter/form';
-import { createTenant, updateTenant } from '#/api';
+import { createApplication, updateApplication } from '#/api';
 import { $t } from '#/locales';
 
 import { useSchema } from '../data';
@@ -36,7 +36,7 @@ const [Drawer, drawerApi] = useVbenDrawer({
     if (!valid) return;
     const values = await formApi.getValues();
     drawerApi.lock();
-    (id.value ? updateTenant(id.value, values) : createTenant(values))
+    (id.value ? updateApplication(id.value, values) : createApplication(values))
       .then(() => {
         emits('success');
         drawerApi.close();
@@ -47,7 +47,7 @@ const [Drawer, drawerApi] = useVbenDrawer({
   },
   onOpenChange(isOpen) {
     if (isOpen) {
-      const data = drawerApi.getData<TenantApi.SysTenant>();
+      const data = drawerApi.getData<ApplicaitonApi.SysApplication>();
       formApi.resetForm();
       if (data) {
         formData.value = data;
